@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30 Days of JavaScript Day 4</title>
+
+    <style>
+
+    body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .months-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: .2rem;
+    }
+
+    .month {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(59, 182, 121);
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .radio-input {
+        margin-top: .5em;
+    }
+    </style>
+</head>
+<body>
+
+    <h1>30 Days of JavaScript Day 4</h1>
+    <h2>Conditional Statements</h2>
+
+    <h2>Grade Students</h2>
+    <label>Enter your score here</label>
+    <input type = "text" placeholder="score" class="score-input">
+    <button class="btn-display-score">Display Grade</button>
+    <p>Grade: <span class="grade"></span></p>
+
+    <h2>Check How Many Days per Month</h2>
+    <div class="months-wrapper">
+        <div class="month">
+        <label for radio>January</label>
+        <input type="radio" class="radio-input" value ="January"  name="month">
+        </div>
+        <div class="month">
+        <label for radio>February</label>
+        <input type="radio" class="radio-input"  value ="February"  name="month">
+        </div>
+        <div class="month">
+        <label for radio>March</label>
+        <input type="radio" class="radio-input" value="March"  name="month">
+        </div>
+        <div class="month">
+            <label for radio>April</label>
+            <input type="radio" class="radio-input" value="April"  name="month">
+            </div>
+            <div class="month">
+                <label for radio>May</label>
+                <input type="radio" class="radio-input" value="May"  name="month">
+                </div>
+                <div class="month">
+                    <label for radio>June</label>
+                    <input type="radio" class="radio-input" value="June"  name="month">
+                    </div>
+                    <div class="month">
+                    <label for radio>July</label>
+                    <input type="radio" class="radio-input" value="July"  name="month">
+                    </div>
+                    <div class="month">
+                        <label for radio>August</label>
+                        <input type="radio" class="radio-input" value="August"  name="month">
+                        </div>
+                    <div class="month">
+                    <label for radio>September</label>
+                    <input type="radio" class="radio-input" value="September"  name="month">
+                    </div>
+                    <div class="month">
+                    <label for radio>October</label>
+                    <input type="radio" class="radio-input" value="October" name="month">
+                    </div>
+                    <div class="month">
+                    <label for radio>November</label>
+                    <input type="radio" class="radio-input" value="November" name="month">
+                    </div>
+                    <div class="month">
+                        <label for radio>December</label>
+                        <input type="radio" class="radio-input" value="December"  name="month">
+                        </div>
+        <button class="check-month-btn" onclick="displayDaysPerMonth()">Display Days</button>
+        <p><span id="month-result">Month </span><span> has</span> <span class="days-number"> TOT</span> days</p>
+        
+
+
+</div>
+    
+<h2>Select Gender</h2>
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<input type="radio" name="gender" value="other">Other
+
+<br> 
+      
+<button type="button" onclick="displayRadioValue()"> 
+    Submit 
+</button> 
+  
+<br> 
+  
+<div id="result"></div> 
+
+
+<script src="main.js"></script>
+</body>
+</html>
