@@ -143,7 +143,7 @@ switch (userDay) {
 }*/
 
 //8. Write a program which tells the number days in a month.
-/*let month = prompt('Please write the month');
+let month = prompt('Please write the month');
 //let month = [userInput.toUpperCase(), userInput.toLowerCase()];
 
 if (month === 'January' || month === 'January'.toUpperCase() || month === 'January'.toLowerCase()
@@ -155,8 +155,9 @@ if (month === 'January' || month === 'January'.toUpperCase() || month === 'Janua
     console.log(`${month} has 28 days`)
 } else {
     console.log('Incorrect month format')
-};*/
+};
 
+/*
 let displayedMonth = document.getElementById('month-result');
 let displayedDays = document.querySelector('.days-number');
 
@@ -176,7 +177,7 @@ displayDaysPerMonth = () => {
     console.log(`${month.value} has 28 days`)
 }
 };
-
+*/
 
 
 function displayRadioValue() { 
