@@ -314,6 +314,11 @@ const countries = [
 
 //20. Use the countries array to create the following array of arrays:
 console.log('use the countries array to create an array of arrays');
+const newCountries = []
+for (const country of countries) {
+    newCountries.push([country,(country.toUpperCase().slice(0,3)), country.length]);
+}
+console.log(newCountries);
 
 
 
@@ -333,7 +338,7 @@ console.log('use the countries array to create an array of arrays');
 
 //21. In above countries array, check if there is a country or countries containing the word 'land'. If there are countries containing 'land', print it as array. If there is no country containing the word 'land', print 'These are countries without land'.
 // ['Finland', 'Iceland']
-console.log('chec if there is a country containing land')
+console.log('check if there is a country containing land')
 
 for (const country of countries) {
     country.includes('land') ? console.log(country): console.log('These are countries without land')
@@ -374,7 +379,7 @@ console.log(countriesEndingWithIa);
 // ['Albania', 'Bolivia','Ethiopia']
 //23. Using the above countries array, create an array for countries length'.
 
-console.log('print an array with countries lenght')
+console.log('print an array with countries length')
 let countryLengthArr = [];
 for (const country of countries) {
     countryLengthArr.push(country.length);
@@ -408,17 +413,6 @@ console.log(fiveLetterCountries);
 
 //26. Find the longest word in the webTechs array
 
-
-
-
-//27. Use the webTechs are to create the following array of arrays:
-
-// [["HTML", 4], ["CSS", 3],["JavaScript", 10],["React", 5],["Redux", 5],["Node", 4],["MongoDB", 7]]
-//28. An application created using MongoDB, Express, React and Node is called a MERN stack. Create the acronym MERN by using the array mernStack
-
-//29. Iterate through the array, ["HTML", "CSS", "JS", "React", "Redux", "Node", "Express", "MongoDB"] using a for loop or for of loop and print out the items.
-
-console.log('iterate through the webTech array and print out the items');
 const webTechs = [
     'HTML',
     'CSS',
@@ -428,9 +422,43 @@ const webTechs = [
     'Node',
     'MongoDB'
   ]
-for (const tech in webTechs) {
-    console.log(webTechs[tech]);
-};
+
+let webTechLength = [];
+for (const tech of webTechs) {
+    webTechLength.push(tech.length);
+}
+console.log(webTechLength);
+let longestWord = [];
+for (const tech of webTechs) {
+    console.log(tech)
+    if(tech.length > tech.length)  {
+        longestWord.push(tech);
+
+    }
+}
+console.log(longestWord);
+
+
+
+
+
+//27. Use the webTechs are to create the following array of arrays:
+const arrOfWebTechs = [];
+for(const tech of webTechs) {
+    arrOfWebTechs.push([tech, tech.length]);
+}
+console.log(arrOfWebTechs);
+
+// [["HTML", 4], ["CSS", 3],["JavaScript", 10],["React", 5],["Redux", 5],["Node", 4],["MongoDB", 7]]
+//28. An application created using MongoDB, Express, React and Node is called a MERN stack. Create the acronym MERN by using the array mernStack
+
+//29. Iterate through the array, ["HTML", "CSS", "JS", "React", "Redux", "Node", "Express", "MongoDB"] using a for loop or for of loop and print out the items.
+
+console.log('iterate through the webTech array and print out the items');
+for (const tech of webTechs) {
+    console.log(tech);
+}
+
 
 
 //30. This is a fruit array , ['banana', 'orange', 'mango', 'lemon'] reverse the order using loop without using a reverse method.
