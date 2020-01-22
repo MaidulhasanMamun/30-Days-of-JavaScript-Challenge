@@ -163,13 +163,8 @@ console.log(distance);// distance = 12;
 
 //3. Write a pattern which identify if a string is a valid JavaScript variable
 
-let testPattern = /^[A-Za-z]/g;
-let variable1 = 'first_name';
-let testMatching = variable1.match(testPattern);
-console.log(testMatching)
-
 let is_valid_variable = (variable) => {
-    let startsWithPattern = /^[A-Za-z]/g;
+    let startsWithPattern = /^[A-Za-z][^-]/g;
     if(variable.match(startsWithPattern)) {
         return true
     } else {
@@ -177,6 +172,7 @@ let is_valid_variable = (variable) => {
     }
     } 
 
+    
 console.log(is_valid_variable('first_name'));
 console.log(is_valid_variable('first_name'));
 console.log(is_valid_variable('first-name'));
@@ -194,7 +190,7 @@ console.log(is_valid_variable('firstname'));
 
 paragraph = `I love teaching. If you do not love teaching what else can you love. I love Python if you do not love something which can give you all the capabilities to develop an application what else can you love.`
 
-const displayWords = () => {
+const displayWords = (paragraph) => {
     let paragraphToArr = paragraph.split(' ');
     console.log(paragraphToArr)
     
@@ -208,19 +204,23 @@ const displayWords = () => {
     
     return sentenceCount
     
+    
 }
 
 console.log(displayWords(paragraph))
 
+    let checkWords = displayWords(paragraph);
+    console.log(checkWords)
+    checkWords.sort((a, b) => {
+        if(a.sentenceWords > b.sentenceWords) return -1;
+        if(a.sentenceWords < b.sentenceWords) return 1;
+        return 0;
+    })
+
+    console.log(checkWords.slice(0, 10));
 
 
-const tenMostFrequentWords = () => {
-    let checkWords = paragraph;
-    console.log(checkWords.length)
 
-
-}
-tenMostFrequentWords()
 //EXERCISE LEVEL 3
 
 //1. Write a function which cleans text. Clean the following text. After cleaning, count three most frequent words in the string.
@@ -235,25 +235,38 @@ const cleanText = (sentence) => {
 
 console.log(cleanText(sentence));
 
+const countWords = (sentence) => {
+    let newText = cleanText(sentence);
+    let textToArr = newText.split(' ');
+    console.log(textToArr);
+    let textSet = new Set(textToArr);
+    
+    const paragraphCount = [];
+    const paragraphWords = {};
+    for (const w of textSet) {
+        const filteredWords = textToArr.filter(word => word === w);
+        paragraphCount.push({word: w, paragraphWords: filteredWords.length});
+    }
 
-let newText = cleanText(sentence);
-let textToArr = newText.split(' ');
-console.log(textToArr);
-let textSet = new Set(textToArr);
-const paragraphCount = [];
-const paragraphWords = {};
-for (const w of textSet) {
-    const filteredWords = textToArr.filter(word => word === w);
-    paragraphCount.push({word: w, paragraphWords: filteredWords.length});
+    return paragraphCount
 }
-console.log(paragraphCount)
-let newObj = Object.assign({}, paragraphCount);
-console.log(newObj);
 
-for(const word in newObj) {
-    console.log(newObj[word])
+console.log(countWords(sentence))
 
-}
+    let wordsCounted = countWords(sentence);
+    console.log(wordsCounted)    
+    //testing
+    let testing = wordsCounted.filter((words) => words.paragraphWords === 3 || words.paragraphWords > 1);
+    console.log(testing)
+
+    wordsCounted.sort((a, b) => {
+        if(a.paragraphWords > b.paragraphWords) return -1;
+        if(a.paragraphWords > b.paragraphWords) return 1;
+        return 0;
+    })
+    console.log(wordsCounted.slice(0,3));
+
+
 
 
 
