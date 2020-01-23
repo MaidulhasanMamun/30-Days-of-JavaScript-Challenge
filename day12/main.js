@@ -192,7 +192,6 @@ paragraph = `I love teaching. If you do not love teaching what else can you love
 
 const displayWords = (paragraph) => {
     let paragraphToArr = paragraph.split(' ');
-    console.log(paragraphToArr)
     
     const sentenceSet = new Set (paragraphToArr);
     const sentenceCount = [];
@@ -203,6 +202,7 @@ const displayWords = (paragraph) => {
     }
     
     return sentenceCount
+    
     
     
 }
