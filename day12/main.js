@@ -164,8 +164,9 @@ console.log(distance);// distance = 12;
 //3. Write a pattern which identify if a string is a valid JavaScript variable
 
 let is_valid_variable = (variable) => {
-    let startsWithPattern = /^[A-Za-z][^-]/g;
-    if(variable.match(startsWithPattern)) {
+    let startsWithPattern = /^[A-Z$_]/ig;
+    let dashPattern = /[-]/g;
+    if(variable.match(startsWithPattern) && !variable.match(dashPattern)){
         return true
     } else {
         return false;
@@ -173,6 +174,8 @@ let is_valid_variable = (variable) => {
     } 
 
     
+console.log(is_valid_variable('$first_name'));
+console.log(is_valid_variable('_first_name'));
 console.log(is_valid_variable('first_name'));
 console.log(is_valid_variable('first_name'));
 console.log(is_valid_variable('first-name'));
