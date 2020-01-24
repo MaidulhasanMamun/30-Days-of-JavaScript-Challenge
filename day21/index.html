@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30 Days of JavaScript Day 21: DOM</title>
+
+    <style>
+    
+
+    body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subtitle {
+        text-decoration: underline;
+    }
+    .year {
+        font-size: 60px;
+    }
+
+    .full-date {
+        padding: 1rem;
+    }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+        <h1>Asabeneh Yetayeh challenges in <span class="year">2020</span></h1>
+        <h2 class="subtitle">30DaysOfJavaScript Challenge</h2>
+        <p class="full-date"></p>
+        <ul>
+            <li>30DaysOfPython Challenge Done</li>
+            <li>30DaysOfJavaScript Challenge Ongoing</li>
+            <li>30DaysOfReact Challenge Coming</li>
+            <li>30DaysOfFullStack Challenge Coming</li>
+            <li>30DaysOfDataAnalysis Challenge Coming</li>
+            <li>30DaysOfReactNative Challenge Coming</li>
+            <li>30DaysOfMachineLearning Challenge Coming</li>
+        </ul>
+    </div>
+    <script>
+  const ul = document.querySelector('ul')
+  const challenge = ul.getElementsByTagName('li');
+  const year = document.querySelector('.year');
+  const fullDate = document.querySelector('.full-date');
+  for(const item of challenge) {
+    if(item.textContent.includes('Done')) {
+        item.style.background = '#5BBC7A';
+
+    } else if(item.textContent.includes('Ongoing')) {
+        item.style.background = '#F7DC5C';
+
+    } else {
+        item.style.background = '#EB695B';
+
+    } item.style.padding = '2rem';
+      item.style.listStyle = 'none';
+      item.style.width = '45rem';
+      item.style.margin = '.4rem';
+
+  }
+
+  const generateRandomColor = () => {
+      let randomColor = '';
+      let lettersNums = '0123456789abcdef';
+      for(let i = 0; i < 6; i++) {
+        let randomIndex = Math.round(Math.random() * lettersNums.length);
+        randomColor = randomColor + lettersNums[randomIndex];
+
+      }
+      return `#${randomColor}`;
+  }
+console.log(generateRandomColor())
+setInterval(() => {
+    year.style.color = generateRandomColor();
+    fullDate.style.background = generateRandomColor();
+
+
+}, 1000);
+
+setInterval(() => {
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() +1;
+    let currentYear = date.getFullYear();
+    let currentHour = date.getHours();
+    let currentMinutes = date.getMinutes();
+    let currentSeconds = date.getSeconds();
+    fullDate.textContent = `${day}/${month}/${currentYear} ${currentHour}:${currentMinutes}:${currentSeconds}`;
+
+}, 1000);
+
+
+  
+    </script>
+
+</body>
+</html>
