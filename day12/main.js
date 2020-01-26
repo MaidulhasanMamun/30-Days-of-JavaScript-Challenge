@@ -264,7 +264,7 @@ console.log(countWords(sentence))
 
     wordsCounted.sort((a, b) => {
         if(a.paragraphWords > b.paragraphWords) return -1;
-        if(a.paragraphWords > b.paragraphWords) return 1;
+        if(a.paragraphWords < b.paragraphWords) return 1;
         return 0;
     })
     console.log(wordsCounted.slice(0,3));
