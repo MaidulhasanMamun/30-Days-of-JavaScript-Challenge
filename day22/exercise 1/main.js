@@ -1,14 +1,15 @@
 let numsContainer = document.querySelector('.wrapper');
 ;
-
-const isPrime = () => {
-    for (let i = 2; i < 100; i++) {
-    if (num % i === 0) {
+const isPrime = (n) => {
+    for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
         return false
     }
+}   
+    return n > 1;
+    
 }
-    numberBox.style.background = 'red'
-}
+
 for(let i = 0; i < 100 +1; i++) {
     let numberBox = document.createElement('div');
     let numberHeader = document.createElement('h2');
@@ -23,14 +24,14 @@ for(let i = 0; i < 100 +1; i++) {
     numberBox.style.margin = '.1rem';
     numberBox.style.textAlign = 'center';
 
-    if(i % 2 === 0) {
+    if(isPrime(i)) {
+        numberBox.style.background = '#EB695B';
+    }
+    else if(i % 2 === 0) {
         numberBox.style.background = "#21BF73";
-    } else if(i % 2 !== 0) {
+    } else {
         numberBox.style.background = "#FDDB3A";
 
-    } else {
-
-        numberBox.style.background = isPrime();
     }
 
     

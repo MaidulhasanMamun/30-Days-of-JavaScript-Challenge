@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30 Days JavaScript Challenge Day 23: DOM</title>
+
+<style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container {
+    padding: 6rem 4rem;
+
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.header {
+    color: rgb(59, 53, 53);
+    font-size: 35px;
+
+}
+.input-container {
+    padding: 2rem;
+    width: 40rem;
+    font-size: 35px;
+    border: 1px solid lightgray;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.input-container,
+.keycode-container {
+    box-shadow: 0 1rem 1rem rgba(77, 71, 66, 0.4);
+}
+
+.keycode-container {
+    width: 11rem;
+    height: 7rem;
+    font-size: 70px;
+    border: 1px solid lightgray;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    padding: 0.7rem 3rem;
+}
+
+.show {
+    display: block;
+}
+.key-press,
+.keycode {
+    color: lightgreen;
+    cursor: pointer;
+}
+
+.key-press {
+    margin-left: 1rem;
+}
+
+
+</style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="wrapper">
+
+            <div class="input-container">
+                <h1 class="header">You pressed</h1>
+               <span class="key-press"></span>
+            </div>
+            
+            <div class="keycode-container">
+                <span class="keycode"></span>
+
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
