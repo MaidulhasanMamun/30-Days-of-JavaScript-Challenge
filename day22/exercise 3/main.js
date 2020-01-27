@@ -7,14 +7,14 @@ body.style.fontFamily = 'Montserrat';
 container.style.padding = '3rem 8rem';
 
 const generateRandomColor = () => {
-    let randomColor = '';
-    let lettersNums = '0123456789abcdef';
+    let randomColor = '#';
+    let str = '0123456789abcdef';
     for(let i = 0; i < 6; i++) {
-      let randomIndex = Math.round(Math.random() * lettersNums.length);
-      randomColor = randomColor + lettersNums[randomIndex];
+      let index = Math.floor(Math.random() * str.length);
+      randomColor += str[index];
 
     }
-    return `#${randomColor}`;
+    return randomColor
 }
 console.log(generateRandomColor());
 
@@ -80,27 +80,30 @@ for(const challenge of asabenehChallenges2020.challenges) {
     let topicContainer = document.createElement('details');
     console.log(topicContainer)
 
-   
+    let slicedWord = challenge.name.slice(11, challenge.name.length);
+
 
     let openTopic = document.createElement('b');
         // console.log(openTopic)
         challengeName.textContent = challenge.name;
-        
+
         topicContainer.append(openTopic);
-    for(const topic of challenge.topics) {
         const challengeSummary = document.createElement('summary')
+        challengeSummary.textContent = slicedWord
+
+
+    for(const topic of challenge.topics) {
         const challengeSubject = document.createElement('li');
         challengeSubject.textContent = topic;
     
-        let slicedWord = challenge.name.slice(11, challenge.name.length);
-        challengeSummary.textContent = slicedWord
         challengeSubject.style.listStyle = 'none';
         // challengeSubject.style.display = 'none';
-        topicContainer.append(challengeSummary);
         topicContainer.append(challengeSubject);
 
         
     }
+    topicContainer.append(challengeSummary);
+
 
     isCompleted.textContent = challenge.status;
     if(challenge.status.includes('Done')) {
@@ -255,12 +258,14 @@ container.append(keywordsTitle);
 let keywordContainer = document.createElement('div');
 keywordContainer.style.display = 'flex';
 keywordContainer.style.flexWrap = 'wrap';
-const keywordsDisplayed = asabenehChallenges2020.keywords.map((keyword) => {
+
+for (const keyword of  asabenehChallenges2020.keywords)  {
     let keywordIcon = document.createElement('div');
     keywordIcon.style.margin = '.5rem';
     keywordIcon.style.borderRadius = '50px';
     let randomColor = generateRandomColor();
     keywordIcon.style.backgroundColor = randomColor;
+    console.log(randomColor)
     // console.log(keywordIcon);
     keywordIcon.style.padding = '.5rem';
     keywordIcon.textContent = `# ${keyword}`;
@@ -269,7 +274,7 @@ const keywordsDisplayed = asabenehChallenges2020.keywords.map((keyword) => {
     keywordContainer.append(keywordIcon);
     container.append(keywordContainer);
 
-})
+}
 
 
     
