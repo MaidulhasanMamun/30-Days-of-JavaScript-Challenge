@@ -36,7 +36,7 @@ const displayTenLargestCountries = () => {
              let countryPopulation = document.createElement('p')
              let countryPopulationDiv = document.createElement('div');
              countryName.textContent = name;
-             countryPopulation.textContent = population;
+             countryPopulation.textContent = population.toString();
              countryNameDiv.append(countryName);
              countryContainer.append(countryNameDiv);
              countryContainer.append(countryBar);
