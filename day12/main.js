@@ -258,10 +258,7 @@ console.log(countWords(sentence))
 
     let wordsCounted = countWords(sentence);
     console.log(wordsCounted)    
-    //testing
-    let testing = wordsCounted.filter((words) => words.paragraphWords === 3 || words.paragraphWords > 1);
-    console.log(testing)
-
+  
     wordsCounted.sort((a, b) => {
         if(a.paragraphWords > b.paragraphWords) return -1;
         if(a.paragraphWords < b.paragraphWords) return 1;

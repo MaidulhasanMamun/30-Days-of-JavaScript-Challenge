@@ -11,7 +11,7 @@ const p = document.querySelector('.paragraph');
 
 calculateWeightBtn.addEventListener('click', calculateWeight = () => {
     if(massInput.value < 1) {
-        p.textContent = 'Please enter a number greater than 0';
+        p.textContent = 'Mass is required';
         p.style.color = 'red';
 
     } else if (!massInput.value.match(/^[0-9]*$/)){ 
