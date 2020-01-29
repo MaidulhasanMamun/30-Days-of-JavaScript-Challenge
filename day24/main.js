@@ -64,8 +64,6 @@ calculateWeightBtn.addEventListener('click', calculateWeight = () => {
             planetImg.src = 'saturn.png';
             weightDisplayed.textContent = `The weight of an object in Saturn is ${weightText} N`
     
-       
-    
         }  else if(planetInput.value === '8.86') {
             planetImg.src = 'uranus.png';
             weightDisplayed.textContent = `The weight of an object in Uranus is ${weightText} N`
