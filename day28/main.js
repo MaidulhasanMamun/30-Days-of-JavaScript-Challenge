@@ -158,7 +158,7 @@ const removePlayer = (player, index) => {
 const addScore = (player, index) => {
     index = players.indexOf(player);
     if (index !== -1) {
-        players[index].score ++;
+        players[index].score +=5;
 
     }
     console.log(players);
@@ -169,14 +169,13 @@ const addScore = (player, index) => {
 const decreaseScore = (player, index) => {
     index = players.indexOf(player);
     if (index !== -1) {
-        players[index].score --;
+        players[index].score -= 5;
 
     }
     console.log(players);
     displayPlayers()
  
 }
-
 
 
 displayPlayers()

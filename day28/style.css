@@ -97,33 +97,11 @@ input {
     color: rgb(235, 212, 212);
     font-weight: 600;
     font-size: 18px;
-    
-}
-
-.new-player {
-    animation-name: moveInLeft;
-    animation-duration: .5s;
-    animation-timing-function: ease-out;
-}
-
-@keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-35px);
-
-    }
 
     
-    80% {
-        transform: translateX(40px);
-
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
 }
+
+    
 
 .delete-add-remove {
     display: flex;
