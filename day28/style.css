@@ -109,7 +109,7 @@ input {
 }
 .fa-trash-alt,
 .btn-score {
-    padding: 1.4rem;
+    padding: 1.1rem;
     margin: .3rem;
     background: white;
     border-radius: 50%;
@@ -119,7 +119,7 @@ input {
 }
 
 .fa-trash-alt {
-    color: rgb(255, 60, 0);
+    color: rgb(51, 18, 9);
     font-size: 24px;
 }
 
@@ -128,6 +128,13 @@ input {
     transform: scale(1.1);
     transition: all .1s ease-in-out;
 }
+
+.fa-trash-alt:hover {
+    color: rgb(250, 63, 29);
+
+
+}
+
  
 
 
