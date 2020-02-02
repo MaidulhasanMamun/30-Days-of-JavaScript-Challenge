@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+
+}
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+} 
+
+.container {
+    padding: 2rem 4rem;
+    background-color: #EEEFF0;
+    
+}
+
+.header {
+    padding: 2rem 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 3.2rem;
+}
+
+.title {
+    color: #F2A93B;
+    font-size: 40px;
+}
+
+.subtitle {
+    color: rgb(68, 61, 61);
+}
+
+.form {
+    background-color: white;
+    width: 100vw;
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.search-input {
+    width: 45rem;
+    padding: .8rem;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    
+    
+}
+
+.buttons-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-btn,
+.capital-btn,
+.population-btn {
+    margin-left: .4rem;
+    border-radius: 35px;
+    background-color: #F2A93B;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+}
+
+.fa-chart-bar {
+    color: #F2A93B;
+    margin-left: .7rem;
+    cursor: pointer;
+}
+
+.fa-long-arrow-alt-up {
+    margin-left: .2rem;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    color: rgb(236, 233, 233);
+    margin-top: 2rem;
+}
+
+button:hover {
+    background-color: rgb(235, 150, 22);
+    transform: translateY(-.1rem);
+
+}
+
+.countries-wrapper {
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-row-gap: .4rem;
+    grid-column-gap: .4rem;
+}
+
+.country-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+    padding: 1rem;
+    line-height: 1.7;
+    height: 17rem;
+    width: 13rem;
+    text-align: center;
+}
+
+.flag {
+    width: 8rem;
+    height: 5rem;
+    box-shadow: 0 1rem 1rem rgb(68, 61, 61, .4);
+}
+
+.country-name {
+    color: rgb(235, 150, 22);
+    margin-top: .7rem;
+}
+
+/* statistics, languages and population */
+
+.statistics-container {
+    padding: 2rem 0;
+    
+}
+
+.text-paragraph {
+    text-align: center;
+}
+
+.statistics-btn__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.pop-btn,
+.lang-btn {
+    margin-left: .4rem;
+    border-radius: 3px;
+    background-color: #F2A93B;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    color: rgb(236, 233, 233);
+    margin-top: 2rem;
+}
+
+button:hover {
+    background-color: rgb(235, 150, 22);
+    transform: translateY(-.1rem);
+
+}
+
+.statistics-countries__wrapper {
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+a {
+    padding-top: .8rem;
+}
+.statistics-countries__container {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    padding: .5rem;
+    align-items: center;
+}
+
+.population-header {
+    text-align: center;
+    color: rgb(235, 150, 22);
+
+}
+

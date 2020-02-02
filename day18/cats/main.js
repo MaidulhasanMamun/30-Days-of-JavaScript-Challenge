@@ -17,9 +17,11 @@ const displayCats = async () => {
             let catOrigin = document.createElement('p');
             let catTemperament = document.createElement('p');
             let catDescription = document.createElement('p');
+            let ratingsContainer = document.createElement('div');
             let childFriendly = document.createElement('p');
             let dogFriendly = document.createElement('p');
             let catIntelligence = document.createElement('p');
+            let wikipediaURL = document.createElement('a');
     
             catContainer.setAttribute('class', 'cat')
             catName.textContent = `${name}`;
@@ -27,11 +29,14 @@ const displayCats = async () => {
             catOrigin.textContent = `Origin: ${origin}`;
             catTemperament.textContent = `Temperament: ${temperament}`;
             catDescription.textContent = `Description: ${description}`;
+
+            ratingsContainer.setAttribute('class', 'ratings-container');
             childFriendly.textContent = `Child Friendly: ${child_friendly}`;
             dogFriendly.textContent = `Dog Friendly: ${dog_friendly}`;
-            catIntelligence.textContent = `Description: ${intelligence}`;
-    
-            catContainer.append(catName, catOrigin, catTemperament, catDescription, childFriendly, dogFriendly, intelligence);
+            catIntelligence.textContent = `Cat Intelligence: ${intelligence}`
+            wikipediaURL.src = `${wikipedia_url}`;
+            ratingsContainer.append(childFriendly, dogFriendly);
+            catContainer.append(catName, catOrigin, catTemperament, catDescription, ratingsContainer, catIntelligence, wikipediaURL);
             catsWrapper.append(catContainer);
             
         }

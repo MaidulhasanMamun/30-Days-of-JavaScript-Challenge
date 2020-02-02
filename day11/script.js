@@ -25,8 +25,6 @@ const rectangle = {
 
 // Exercises: Level 2
 
-
-
 const users = [
     {
       name:'Brook',
@@ -89,6 +87,8 @@ for(const {skills} of users) {
 for(const {name, capital, population, languages} of countriesList) {
     console.log(name, capital, population, languages);
 }
+
+
 //2. A junior developer structure student name, skills and score in array of arrays which may not easy to read. Destruction the following array name to name, skills array to skills, scores array to scores, JavaScript score to jsScore and React score to reactScore variable.
 
 const student = ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]];
