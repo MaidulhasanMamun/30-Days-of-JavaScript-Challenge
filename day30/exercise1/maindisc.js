@@ -1,7 +1,5 @@
 const form = document.querySelector('.form');
-const totalCountries = document.querySelector('.total-countries');
-const resultParagraph = document.querySelector('.result-paragraph');
-
+const totalCountries = document.querySelector('.total-countries')
 const searchInput = document.querySelector('.search-input');
 const nameBtnSort = document.querySelector('.name-btn');
 const capitalBtnSort = document.querySelector('.capital-btn');
@@ -9,7 +7,6 @@ const populationBtnSort = document.querySelector('.population-btn');
 const countriesWrapper = document.querySelector('.countries-wrapper');
 const statisticsContainer = document.querySelector('.statistics-container');
 const backToTopBtn = document.querySelector('.back-to-top');
-
 
 // statistics
 const statisticsWrapper = document.querySelector('.statistics-countries__wrapper');
@@ -25,9 +22,9 @@ let countryContainer,
      countryLanguages,
      countryPopulation;
 
-let arrowName = document.getElementById('arrow-name');
-let arrowCapital = document.getElementById('arrow-capital');
-let arrowPopulation = document.getElementById('arrow-population');
+let popSorted = true;
+
+let countryObj = [];
 
 
 form.addEventListener('submit', (e) => {
@@ -37,12 +34,6 @@ form.addEventListener('submit', (e) => {
 const createNode = (e) => {
     return document.createElement(e);
 };
-
-let flag = false;
-const toggle = () => {
-  flag = !flag;
-  return flag;
-}
 
 const calculateWorldPopulation = () => {
     let sum = 0;
@@ -85,7 +76,7 @@ const createWorldBar = () => {
     worldDiv.setAttribute('class', 'statistics-countries__container')
     worldName.textContent = 'World';
     let worldPopulation = calculateWorldPopulation();
-    worldBar.style.width = `${worldPopulation/10000000}px`;
+    worldBar.style.width = `${worldPopulation/8000000}px`;
     worldBar.style.height = '40px';
     worldBar.style.backgroundColor = 'rgb(235, 150, 22)';
     worldPop.textContent = worldPopulation.toString();
@@ -94,73 +85,73 @@ const createWorldBar = () => {
     statisticsWrapper.append(worldDiv);
 
 } 
+    
+const searchByAll = () => {
 
-const updateStatistics = () => {
-    //update population statistics
-    
-}
-    
-const searchByAll = (searchInput) => {
-   
-    let countryArr = [];
 
     countriesWrapper.textContent = '';
+    btnStatsContainer.textContent = '';
     statisticsWrapper.textContent = '';
     displayText.textContent = '';
-   
+    const popHeader = createNode('h2');
+    popHeader.textContent = 'Population';
+    popHeader.setAttribute('class', 'population-header');
+    statisticsWrapper.append(popHeader);
     createWorldBar();
-    let regex = /^[A-Zaz]/g;
 
-    if(searchInput.match(regex)) {
-        resultParagraph.textContent = 'Please enter only letters' 
-    } else {
-
-        for(const country of countries) {
+    for(const country in countries) {
+        let {name, capital, languages, flag, population} = countries[country];
         
-            if(country.name.toLowerCase().includes(searchInput) || country.capital.toLowerCase().includes(searchInput) || country.languages.toString().toLowerCase().includes(searchInput)) {
-                let countryObj = {};
-            //create elements
-            countryObj.name = country.name;
-            countryObj.capital = country.capital;
-            countryObj.languages = country.languages;
-            countryObj.flag = country.flag;
-            countryObj.population = country.population;
-            
-            
-            // createCountry();
-    
-            countryArr.push(countryObj);
-      
-    
-            }
-    
-            resultParagraph.textContent = `${countryArr.length} countries satisfy the criteria.`
-    
+        if(name.toLowerCase().includes(searchInput.value) || capital.toLowerCase().includes(searchInput.value) || languages.toString().toLowerCase().includes(searchInput.value)) {
+        //create elements
+        
+        createCountry();
+        //setting textContent
+        countryFlag.src = `${flag}`;
+        countryName.textContent = `${name}`;
+        countryCapital.textContent = `Capital: ${capital}`;
+        countryLanguages.textContent = `Languages: ${languages}`;
+        countryPopulation.textContent = `Population: ${population}`;
+
+        //appendingDivs
+        appendCountry();
+        
+        //update population statistics
+        const countryPopContainer = createNode('div');
+        countryPopContainer.setAttribute('class', 'statistics-countries__container');
+        let countryPopName = createNode('p');
+        let countryNameDiv = createNode('div');
+        let countryBar = createNode('div');
+        countryBar.style.width = `${population/5000000}px`;
+        countryBar.style.height = '40px';
+        countryBar.style.backgroundColor = 'rgb(235, 150, 22)';
+        let countryPop = createNode('p')
+        let countryPopulationDiv = createNode('div');
+        countryPopName.textContent = name;
+        countryPop.textContent = population.toString();
+        countryNameDiv.append(countryPopName);
+        countryPopContainer.append(countryNameDiv, countryBar);
+        
+        countryPopulationDiv.append(countryPop);
+        countryPopContainer.append(countryPopulationDiv);
+
+        statisticsWrapper.append(countryPopContainer);
+
+
         }
-        return countryArr
     
     }
-
-    
-
-
 }
     
-
   
         
-searchInput.addEventListener('keyup', () => {
-    const newArr = searchByAll(searchInput.value)
-    displayCountries(newArr);
-});
+searchInput.addEventListener('keyup', () => searchByAll());
 
-const displayCountries = (countries) => {
+const displayCountries = () => {
     countriesWrapper.textContent = '';
-    statisticsWrapper.textContent = '';
 
     totalCountries.textContent = countries.length;
-    createWorldBar();
-
+    
     for(const country in countries) {
         let {name, flag, capital, languages, population} = countries[country];
 
@@ -176,117 +167,121 @@ const displayCountries = (countries) => {
         //appendingDivs
         appendCountry();
 
-        const countryPopContainer = createNode('div');
-        countryPopContainer.setAttribute('class', 'statistics-countries__container');
-        let countryPopName = createNode('p');
-        let countryNameDiv = createNode('div');
-        let countryBar = createNode('div');
-        countryBar.style.width = `${population/10000000}px`;
-        countryBar.style.height = '40px';
-        countryBar.style.backgroundColor = 'rgb(235, 150, 22)';
-        let countryPop = createNode('p')
-        let countryPopulationDiv = createNode('div');
-        countryPopName.textContent = name;
-        countryPop.textContent = population.toString();
-        countryNameDiv.append(countryPopName);
-        countryPopContainer.append(countryNameDiv, countryBar);
-    
-        countryPopulationDiv.append(countryPop);
-        countryPopContainer.append(countryPopulationDiv);
-
-
-        statisticsWrapper.append(countryPopContainer);
 
     }
-
 }
 
-const sortByNameOrder = (newArr) => {
-    newArr.sort((a, b) => {
-        if(a.name > b.name) return -1;
-        if(a.name < b.name) return 1;
-        return 0;
-
-    })
-    return newArr;
-}
 
 nameBtnSort.addEventListener('click', sortByName = () => {
-  
     countriesWrapper.textContent = '';
-    arrowCapital.classList.add('hide')
-    const newArr = searchByAll(searchInput.value);
-    let sortedArrByName = sortByNameOrder(newArr);
-    if(flag === true) {
-        displayCountries(sortedArrByName);
-        arrowName.setAttribute('class', 'fas fa-long-arrow-alt-up');
+    let countriesArr = [];
 
-    } else {
-        arrowName.setAttribute('class', 'fas fa-long-arrow-alt-down');
-        displayCountries(sortedArrByName.reverse())
+
+    // let arrowUp = createNode('i');
+    // arrowUp.setAttribute('class', 'fas fa-long-arrow-alt-up')
+    // nameBtnSort.append(arrowUp)
+    
+    for(const country in countries) {
+        let {name, flag, capital, languages, population} = countries[country];
+        if(name.toLowerCase().includes(searchInput.value)) {
+            countries.sort()
+            countriesArr.push(countries)
+
+            createCountry();
+
+            //setting textContent
+            countryFlag.src = `${flag}`;
+            countryName.textContent = `${name}`;
+            countryCapital.textContent = `Capital: ${capital}`;
+            countryLanguages.textContent = `Languages: ${languages}`;
+            countryPopulation.textContent = `Population: ${population}`;
+    
+            //appendingDivs
+            appendCountry();
+
+        }
+    
+
+ 
     }
-    toggle();
-
 
 });
 
-
-
-const sortByCapitalOrder = (newArr) => {
-    newArr.sort((a, b) => {
-        if(a.capital < b.capital) return -1;
-        if(a.capital > b.capital) return 1;
-        return 0;
-    })
-    return newArr;
-}
-
-
-   
-capitalBtnSort.addEventListener('click', sortByCapital = () => {
+capitalBtnSort.addEventListener('click', sortCountriesByCapital = () => {
     countriesWrapper.textContent = '';
-    const newArr = searchByAll(searchInput.value);
-    let sortedArrCapital = sortByCapitalOrder(newArr);
-    if(flag === true) {
-        displayCountries(sortedArrCapital);
-        arrowCapital.setAttribute('class', 'fas fa-long-arrow-alt-up');
 
-    } else {
-        arrowCapital.setAttribute('class', 'fas fa-long-arrow-alt-down');
-        displayCountries(sortedArrCapital.reverse())
+    // let arrowUp = createNode('i');
+    // arrowUp.setAttribute('class', 'fas fa-long-arrow-alt-up')
+    // nameBtnSort.append(arrowUp)
+    
+    for(const country in countries) {
+        countriesWrapper.textContent = '';
+        let {name, flag, capital, languages, population} = countries[country];
+        if(capital.toLowerCase().includes(searchInput.value)) {
+            countries.sort()
+            createCountry();
+
+            //setting textContent
+            countryFlag.src = `${flag}`;
+            countryName.textContent = `${name}`;
+            countryCapital.textContent = `Capital: ${capital}`;
+            countryLanguages.textContent = `Languages: ${languages}`;
+            countryPopulation.textContent = `Population: ${population}`;
+    
+            //appendingDivs
+            appendCountry();
+
+        }
+    
+
+ 
     }
-    toggle();
-
 
 });
 
-const sortByPopOrder = (newArr) => {
-    newArr.sort((a, b) => {
+populationBtnSort.addEventListener('click', sortCountriesByPopulation = () => {
+    countriesWrapper.textContent = '';
+    let sortedByPop = Object.assign([{}], countries);
+    
+    sortedByPop.sort((a, b) => {
         if(a.population > b.population) return -1;
         if(a.population < b.population) return 1;
         return 0;
     })
-    return newArr;
-}
 
-populationBtnSort.addEventListener('click', sortCountriesByPopulation = () => {
-    countriesWrapper.textContent = '';
-    const newArr = searchByAll(searchInput.value);
-    let sortedArrPopulation = sortByPopOrder(newArr)
-    if(flag === true) {
-        displayCountries(sortedArrPopulation);
-        arrowPopulation.setAttribute('class', 'fas fa-long-arrow-alt-up');
+    console.table(sortedByPop);
+    popSorted ?  sortedByPop.reverse(): sortedByPop.sort();
+   
 
-    } else {
-        arrowPopulation.setAttribute('class', 'fas fa-long-arrow-alt-down');
-        displayCountries(sortedArrPopulation.reverse())
+
+        for(const country in sortedByPop) {
+            let {name, flag, capital, languages, population} = sortedByPop[country];
+
+            if(name.toLowerCase().includes(searchInput.value) || capital.toLowerCase().includes(searchInput.value) || languages.toString().toLowerCase().includes(searchInput.value)) {
+    
+
+                createCountry();
+            
+                //setting textContent
+                countryFlag.src = `${flag}`;
+                countryName.textContent = `${name}`;
+                countryCapital.textContent = `Capital: ${capital}`;
+                countryLanguages.textContent = `Languages: ${languages}`;
+                countryPopulation.textContent = `Population: ${population}`;
+        
+                //appendingDivs
+                appendCountry();
+
     }
-    toggle();
+    
+
+    }
+   
     
 })
 
 //loads the countries
-displayCountries(countries);
+displayCountries();
 
 
 
@@ -312,8 +307,7 @@ const displayTenLargestCountries = () => {
             let countryPopName = createNode('p');
             let countryNameDiv = createNode('div');
             let countryBar = createNode('div');
-            let worldPopulation = calculateWorldPopulation()
-            countryBar.style.width = `${population/6000000}px`;
+            countryBar.style.width = `${population/5000000}px`;
             countryBar.style.height = '40px';
             countryBar.style.backgroundColor = 'rgb(235, 150, 22)';
             let countryPop = createNode('p')

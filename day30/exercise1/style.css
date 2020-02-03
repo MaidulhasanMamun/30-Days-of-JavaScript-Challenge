@@ -59,6 +59,14 @@ body {
     
     
 }
+.search-input:focus {
+    outline: none;
+}
+
+.result-paragraph {
+    color: #F2A93B;
+
+}
 
 .buttons-wrapper {
     margin-top: 2rem;
@@ -83,6 +91,13 @@ body {
     justify-content: center;
 }
 
+.name-btn:focus,
+.capital-btn:focus,
+.population-btn:focus {
+    outline: none;
+
+}
+
 .fa-chart-bar {
     color: #F2A93B;
     margin-left: .7rem;
@@ -91,6 +106,20 @@ body {
 
 .fa-long-arrow-alt-up {
     margin-left: .2rem;
+    display: none;
+}
+
+.fa-long-arrow-alt-down {
+    margin-left: .2rem;
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 hr {
@@ -220,6 +249,7 @@ a {
 
 .back-to-top {
     color: rgb(235, 150, 22);
+    cursor: pointer;
 
 }
 
