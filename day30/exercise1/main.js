@@ -6,6 +6,7 @@ const capitalBtnSort = document.querySelector('.capital-btn');
 const populationBtnSort = document.querySelector('.population-btn');
 const countriesWrapper = document.querySelector('.countries-wrapper');
 const statisticsContainer = document.querySelector('.statistics-container');
+const backToTopBtn = document.querySelector('.back-to-top');
 
 // statistics
 const statisticsWrapper = document.querySelector('.statistics-countries__wrapper');
@@ -20,6 +21,8 @@ let countryContainer,
      countryCapital,
      countryLanguages,
      countryPopulation;
+
+let popSorted = true;
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -164,19 +167,64 @@ const displayCountries = () => {
     }
 }
 
-let obj = [{key1: 'a', subkey1: 1}, {key2: 'b', subkey2: 2}, {key3: 'c', subkey3: 3}];
-console.log(obj);
+
 nameBtnSort.addEventListener('click', sortByName = () => {
-    obj.reverse();
-    console.log(obj);
-    let arrowUp = createNode('i');
-    arrowUp.setAttribute('class', 'fas fa-long-arrow-alt-up')
-    nameBtnSort.append(arrowUp)
-    let sorted = countries;
-    sorted.reverse();
-    console.table(sorted)
-    for(const country in sorted) {
-        let {name, flag, capital, languages, population} = sorted[country];
+    countriesWrapper.textContent = '';
+
+    // let arrowUp = createNode('i');
+    // arrowUp.setAttribute('class', 'fas fa-long-arrow-alt-up')
+    // nameBtnSort.append(arrowUp)
+    
+    for(const country in countries) {
+        let {name, flag, capital, languages, population} = countries[country];
+        if(name.toLowerCase().includes(searchInput.value)) {
+            countries.sort()
+            createCountry();
+
+            //setting textContent
+            countryFlag.src = `${flag}`;
+            countryName.textContent = `${name}`;
+            countryCapital.textContent = `Capital: ${capital}`;
+            countryLanguages.textContent = `Languages: ${languages}`;
+            countryPopulation.textContent = `Population: ${population}`;
+    
+            //appendingDivs
+            appendCountry();
+
+        }
+    
+
+ 
+    }
+
+});
+
+capitalBtnSort.addEventListener('click', sortCountriesByCapital = () => {
+    countriesWrapper.textContent = '';
+
+    // let arrowUp = createNode('i');
+    // arrowUp.setAttribute('class', 'fas fa-long-arrow-alt-up')
+    // nameBtnSort.append(arrowUp)
+    
+    for(const country in countries) {
+        countriesWrapper.textContent = '';
+        let {name, flag, capital, languages, population} = countries[country];
+        if(capital.toLowerCase().includes(searchInput.value)) {
+            countries.sort()
+            createCountry();
+
+            //setting textContent
+            countryFlag.src = `${flag}`;
+            countryName.textContent = `${name}`;
+            countryCapital.textContent = `Capital: ${capital}`;
+            countryLanguages.textContent = `Languages: ${languages}`;
+            countryPopulation.textContent = `Population: ${population}`;
+    
+            //appendingDivs
+            appendCountry();
+
+        }
+    
 
  
     }
@@ -186,29 +234,39 @@ nameBtnSort.addEventListener('click', sortByName = () => {
 populationBtnSort.addEventListener('click', sortCountriesByPopulation = () => {
     countriesWrapper.textContent = '';
     let sortedByPop = Object.assign([{}], countries);
+    
     sortedByPop.sort((a, b) => {
         if(a.population > b.population) return -1;
         if(a.population < b.population) return 1;
         return 0;
     })
+
     console.table(sortedByPop);
+    popSorted ?  sortedByPop.reverse(): sortedByPop.sort();
+   
 
-    for(const country in sortedByPop) {
-        let {name, flag, capital, languages, population} = sortedByPop[country];
 
-        createCountry();
-        
-        //setting textContent
-        countryFlag.src = `${flag}`;
-        countryName.textContent = `${name}`;
-        countryCapital.textContent = `Capital: ${capital}`;
-        countryLanguages.textContent = `Languages: ${languages}`;
-        countryPopulation.textContent = `Population: ${population}`;
+        for(const country in sortedByPop) {
+            let {name, flag, capital, languages, population} = sortedByPop[country];
 
-        //appendingDivs
-        appendCountry();
-
+            if(name.toLowerCase().includes(searchInput.value) || capital.toLowerCase().includes(searchInput.value) || languages.toString().toLowerCase().includes(searchInput.value)) {
     
+                
+                createCountry();
+            
+                //setting textContent
+                countryFlag.src = `${flag}`;
+                countryName.textContent = `${name}`;
+                countryCapital.textContent = `Capital: ${capital}`;
+                countryLanguages.textContent = `Languages: ${languages}`;
+                countryPopulation.textContent = `Population: ${population}`;
+        
+                //appendingDivs
+                appendCountry();
+
+    }
+    
+
     }
    
     
@@ -324,6 +382,11 @@ const displayTenSpokenLanguages = () => {
 
 displayPopulationBtn.addEventListener('click', () => displayTenLargestCountries());
 displayLanguagesBtn.addEventListener('click', () => displayTenSpokenLanguages());
+
+backToTopBtn.addEventListener('click', backToTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+})
 
 displayTenLargestCountries();
 
