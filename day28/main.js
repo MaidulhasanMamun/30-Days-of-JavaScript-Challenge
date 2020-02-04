@@ -23,22 +23,22 @@ const date = new Date();
 const players = [
 
     {
-        firstName: 'Desalegn',
-        lastName: 'Yetayeh',
+        firstName: 'Johanna',
+        lastName: 'Lamu',
         date: fullDate,
         score: 70,
         
     },
     {
-        firstName: 'Lidiya',
-        lastName: 'Tekle',
+        firstName: 'Michele',
+        lastName: 'Zucca',
         date: fullDate,
         score: 50,
         
     },
     {
-        firstName: 'Getaneh',
-        lastName: 'Yetayeh',
+        firstName: 'Aurora',
+        lastName: 'Zucca',
         date: fullDate,
         score: 65,
         
@@ -70,11 +70,11 @@ const sortPlayersByScore = () => {
 }
 
  addPlayerBtn.addEventListener('click', addPlayer = () => {
-    if(!firstNameInput.value.match(/[0-9]*$/) || !lastNameInput.value.match(/[0-9]*$/)) {
-        warning.textContent = 'Please fill both inputs';
+    if(!firstNameInput.value.match(/[A-Zaz]*$/) || !lastNameInput.value.match(/[A-Za-z]*$/)) {
+        warning.textContent = 'Please fill both inputs with letters';
         warning.style.color = 'red';
 
-    } else if (scoreInput.value < 1){ 
+    } else if (scoreInput.value == 0){ 
         warning.textContent = 'Please input a score';
         warning.style.color = 'red';
 
@@ -123,8 +123,8 @@ const displayPlayers = () => {
 
         increaseScoreBtn.textContent = '+5';
         decreaseScoreBtn.textContent = '-5';
-        increaseScoreBtn.setAttribute('class', 'btn-score');
-        decreaseScoreBtn.setAttribute('class', 'btn-score');
+        increaseScoreBtn.setAttribute('class', 'btn-score btn-score-plus');
+        decreaseScoreBtn.setAttribute('class', 'btn-score btn-score-minus');
         deleteAddScoresContainer.setAttribute('class', 'delete-add-remove');
 
         playerDetails.append(playerFirstName, playerLastName, playerDate);

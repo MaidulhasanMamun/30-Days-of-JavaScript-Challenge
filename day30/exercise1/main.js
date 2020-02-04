@@ -18,6 +18,7 @@ const displayPopulationBtn = document.querySelector('.pop-btn');
 const displayLanguagesBtn = document.querySelector('.lang-btn');
 const displayText = document.querySelector('.text-paragraph');
 
+
 let countryContainer,
      countryFlag,
      countryName,
@@ -38,6 +39,7 @@ const createNode = (e) => {
     return document.createElement(e);
 };
 
+//adds a flag that toggles whether the countries are sort ascending or descending
 let flag = false;
 const toggle = () => {
   flag = !flag;
@@ -55,6 +57,7 @@ const calculateWorldPopulation = () => {
     return sum 
     
 }
+
 
 const createCountry = () => {
     countryContainer = createNode('div');
@@ -214,7 +217,13 @@ const sortByNameOrder = (newArr) => {
 nameBtnSort.addEventListener('click', sortByName = () => {
   
     countriesWrapper.textContent = '';
-    arrowCapital.classList.add('hide')
+    nameBtnSort.classList.add('active');
+    capitalBtnSort.classList.remove('active');
+    populationBtnSort.classList.remove('.active');
+    arrowName.style.display = 'block';
+    arrowCapital.style.display = 'none';
+    arrowPopulation.style.display = 'none';
+    nameBtnSort.classList.add('active');
     const newArr = searchByAll(searchInput.value);
     let sortedArrByName = sortByNameOrder(newArr);
     if(flag === true) {
@@ -245,14 +254,20 @@ const sortByCapitalOrder = (newArr) => {
    
 capitalBtnSort.addEventListener('click', sortByCapital = () => {
     countriesWrapper.textContent = '';
+    nameBtnSort.classList.remove('active');
+    capitalBtnSort.classList.add('active');
+    populationBtnSort.classList.remove('.active');
+    arrowName.style.display = 'none';
+    arrowCapital.style.display = 'block';
+    arrowPopulation.style.display = 'none';
     const newArr = searchByAll(searchInput.value);
     let sortedArrCapital = sortByCapitalOrder(newArr);
     if(flag === true) {
         displayCountries(sortedArrCapital);
-        arrowCapital.setAttribute('class', 'fas fa-long-arrow-alt-up');
+        arrowCapital.setAttribute('class', 'fas fa-long-arrow-alt-down');
 
     } else {
-        arrowCapital.setAttribute('class', 'fas fa-long-arrow-alt-down');
+        arrowCapital.setAttribute('class', 'fas fa-long-arrow-alt-up');
         displayCountries(sortedArrCapital.reverse())
     }
     toggle();
@@ -271,14 +286,20 @@ const sortByPopOrder = (newArr) => {
 
 populationBtnSort.addEventListener('click', sortCountriesByPopulation = () => {
     countriesWrapper.textContent = '';
+    nameBtnSort.classList.remove('active');
+    capitalBtnSort.classList.remove('active');
+    populationBtnSort.classList.add('active');
+    arrowName.style.display = 'none';
+    arrowCapital.style.display = 'none';
+    arrowPopulation.style.display = 'block';
     const newArr = searchByAll(searchInput.value);
     let sortedArrPopulation = sortByPopOrder(newArr)
     if(flag === true) {
         displayCountries(sortedArrPopulation);
-        arrowPopulation.setAttribute('class', 'fas fa-long-arrow-alt-up');
+        arrowPopulation.setAttribute('class', 'fas fa-long-arrow-alt-down');
 
     } else {
-        arrowPopulation.setAttribute('class', 'fas fa-long-arrow-alt-down');
+        arrowPopulation.setAttribute('class', 'fas fa-long-arrow-alt-up');
         displayCountries(sortedArrPopulation.reverse())
     }
     toggle();
@@ -343,6 +364,7 @@ const displayTenSpokenLanguages = () => {
 
     }
     console.log(langArr);
+
     
     let setLang = new Set(langArr);
     const countWords = [];
@@ -403,7 +425,6 @@ backToTopBtn.addEventListener('click', backToTop = () => {
 })
 
 displayTenLargestCountries();
-
 
 
 

@@ -24,13 +24,15 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 4rem 10rem;
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    position: relative;
 
 }
 
 .author {
     font-size: 30px;
     text-align: center;
-    color: #295e7c;
+    color: #304e5e;
     display: flex;
     align-items: center;
 }
@@ -39,7 +41,12 @@ header {
 .letter-l {
     font-weight: 700;
     font-size: 50px;
-    color: rgb(194, 53, 88)
+    color: rgb(194, 53, 88);
+}
+
+.letter-l {
+    font-size: 85px;
+    transform: skewY(164deg);
 }
 
 .letter-l {
@@ -51,9 +58,11 @@ header {
 }
 
 input {
-    padding: .55rem;
+    padding: 0.66rem;
     font-size: 16px;
     font-family: 'Montserrat';
+    border: none;
+    border-radius: 3px;
 }
 
 .add-player__btn {
@@ -87,16 +96,17 @@ input {
 
 .player-container {
     width: 70rem;
-    background-image: linear-gradient(to left, #ff0844 0%, #c93e39 100%); 
-    /* background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%); */
+    /* background-image: linear-gradient(to left, #ff0844 0%, #c93e39 100%);  */
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);        
     padding: 2rem;
     display: flex;
     justify-content: space-between;
     margin: .2rem;
     align-items: center;
-    color: rgb(235, 212, 212);
+    color: white;
     font-weight: 600;
     font-size: 18px;
+    transition: all ease-in-out 1s;
 
     
 }
@@ -111,15 +121,16 @@ input {
 .btn-score {
     padding: 1.1rem;
     margin: .3rem;
-    background: white;
+    background: rgb(120, 159, 185);
     border-radius: 50%;
     border: none;
     cursor: pointer;
     font-size: 18px;
+    color: white;
 }
 
 .fa-trash-alt {
-    color: rgb(51, 18, 9);
+    color: white;
     font-size: 24px;
 }
 
@@ -130,10 +141,21 @@ input {
 }
 
 .fa-trash-alt:hover {
-    color: rgb(250, 63, 29);
+    color: rgb(179, 67, 67);
 
 
 }
+
+.btn-score-plus:hover {
+    background-color: rgb(76, 235, 168);
+
+}
+
+.btn-score-minus:hover {
+    background-color: rgb(228, 98, 98);
+
+}
+
 
  
 
