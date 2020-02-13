@@ -2,6 +2,14 @@ const form = document.querySelector('.form');
 const inputs = document.querySelectorAll('input');
 let warning = document.querySelectorAll('.warning');
 const submitBtn = document.querySelector('.submit-btn');
+let warningFirstName = document.querySelector('.warning-first-name');
+let warningLastName = document.querySelector('.warning-last-name');
+let warningEmail = document.querySelector('.warning-email');
+let warningPassword = document.querySelector('.warning-password');
+let warningPhone = document.querySelector('.warning-phone');
+let warningBio = document.querySelector('.warning-bio');
+let warningBio2 = document.querySelector('.warning-bio2');
+
 
 let firstNameValidated = false
 lastNameValidated = false
@@ -25,14 +33,14 @@ inputs.forEach((input) => {
             let regex = /^[A-Za-z0-9]{3,16}$/g
             if (!regex.test(value)) {
                 console.log(target)
-                warning.textContent = 'First name must be alphanumeric and include 3 - 16 letters';
+                warningFirstName.textContent = 'First name must be alphanumeric and include 3 - 16 letters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 firstNameValidated = false
                 validateForm();
 
             } else {
-                warning.textContent = "";
+                warningFirstName.textContent = "";
                 input.classList.add('thicked');
                 firstNameValidated = true
                 validateForm();
@@ -41,9 +49,9 @@ inputs.forEach((input) => {
 
         } else if (target === 'lastname') {
 
-            let regex = /[A-Za-z0-9]{3,16}$/ig
+            let regex = /^[A-Za-z0-9]{3,16}$/ig
             if (!regex.test(value)) {
-                warning.textContent = 'Last name must be alphanumeric and include 3 - 16 letters';
+                warningLastName.textContent = 'Last name must be alphanumeric and include 3 - 16 letters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 lastNameValidated = false
@@ -51,7 +59,7 @@ inputs.forEach((input) => {
 
 
             } else {
-                warning.textContent = "";
+                warningLastName.textContent = "";
                 input.classList.add('thicked');
                 lastNameValidated = true
                 validateForm();
@@ -61,23 +69,23 @@ inputs.forEach((input) => {
         } else if (target === 'email') {
             let regex = /^[a-z0-9.-_]+@[a-z0-9.-_]+\.[a-z]{2,}$/ig;
             if (!regex.test(value)) {
-                warning.textContent = 'Email must be a valid address, e.g. example@example.com';
+                warningEmail.textContent = 'Email must be a valid address, e.g. example@example.com';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 emailValidated = false
                 validateForm();
 
             } else {
-                warning.textContent = "";
+                warningEmail.textContent = "";
                 input.classList.add('thicked');
                 emailValidated = true
                 validateForm();
 
             }
         } else if (target === 'password') {
-            let regex = /[A-Z-a-z0-9\/@._$--]{6,20}$/g
+            let regex = /^[A-Z-a-z0-9]{6,20}$/g
             if (!regex.test(value)) {
-                warning.textContent = 'Passord be alphanumeric and include 6 - 20 letters';
+                warningPassword.textContent = 'Passord must be alphanumeric and include 6 - 20 letters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 passwordValidated = false;
@@ -85,7 +93,7 @@ inputs.forEach((input) => {
 
 
             } else {
-                warning.textContent = "";
+                warningPassword.textContent = "";
                 input.classList.add('thicked');
                 passwordValidated = true;
                 validateForm();
@@ -94,14 +102,14 @@ inputs.forEach((input) => {
         } else if (target === 'phone') {
             let regex = /[0-9]{3}[-]{1}[0-9]{3}[-]{1}[0-9]{3}[-]{1}[0-9]{4}$/ig
             if (!regex.test(value)) {
-                warning.textContent = 'A valid Telephone number(11 digits and 333-333-3334)';
+                warningPhone.textContent = 'A valid Telephone number(11 digits and 333-333-3334)';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 phoneValidated = false
                 validateForm();
 
             } else {
-                warning.textContent = "";
+                warningPhone.textContent = "";
                 input.classList.add('thicked');
                 phoneValidated = true;
                 validateForm();
@@ -109,14 +117,16 @@ inputs.forEach((input) => {
         } else if (target === 'bio') {
             let regex = /^[a-z_!.;,? ]{8,50}$/ig
             if (!regex.test(value)) {
-                warning.textContent = 'Bio must contain only lowercase letters, underscores,\n hyphens and be 8-50 characters';
+                warningBio.textContent = 'Bio must contain only lowercase letters, underscores,';
+                warningBio2.textContent = 'hyphens and be 8-50 characters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 bioValidated = false
                 validateForm();
 
             } else {
-                warning.textContent = "";
+                warningBio.textContent = "";
+                warningBio2.textContent = "";
                 input.classList.add('thicked');
                 bioValidated = true
                 validateForm();
