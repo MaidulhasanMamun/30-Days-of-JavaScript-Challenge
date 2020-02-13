@@ -14,9 +14,6 @@ body {
 
 } 
 
-.container {
-
-}
 
 header {
     display: flex;
@@ -111,12 +108,11 @@ input {
     
 }
 
-    
-
 .delete-add-remove {
     display: flex;
     align-items: center;
 }
+
 .fa-trash-alt,
 .btn-score {
     padding: 1.1rem;
@@ -142,7 +138,6 @@ input {
 
 .fa-trash-alt:hover {
     color: rgb(179, 67, 67);
-
 
 }
 

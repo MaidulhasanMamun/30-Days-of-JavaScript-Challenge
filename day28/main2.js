@@ -53,6 +53,7 @@ const players = [
     
 ]
 
+/*
 
 const createNode = (e) => {
     return document.createElement(e);
@@ -112,11 +113,13 @@ const addPlayer = () => {
 const displayPlayers = () => {
     wrapper.textContent = '';
     sortPlayersByScore();
-    for(const player of players) {
-        let {firstName, lastName, date, score} = player;
-        
+
+    for(const player of playersJson) {
+        console.log(playersJson)
         let playerContainer = createNode('div');
         playerContainer.setAttribute('class', 'player-container');
+        let {firstName, lastName, date, score} = player;
+
         let playerDetails = createNode('div')
         let playerFirstName = createNode('p');
         let playerLastName = createNode('p');
@@ -155,20 +158,20 @@ const displayPlayers = () => {
 
 }
 
-const removePlayer = (player) => {
-   console.log(player)
-   const index = players.indexOf(player);
-   console.log(index)
+const removePlayer = (player, index) => {
+    index = players.indexOf(player);
     if (index !== -1) {
         players.splice(index, 1);
 
-    }   
+
+    }
     displayPlayers()
     
+    console.log(players)
 }
 
-const addScore = (player) => {
-    const index = players.indexOf(player);
+const addScore = (player, index) => {
+    index = players.indexOf(player);
     if (index !== -1) {
         players[index].score += 5;
 
@@ -177,8 +180,8 @@ const addScore = (player) => {
  
 }
 
-const decreaseScore = (player) => {
-    const index = players.indexOf(player);
+const decreaseScore = (player, index) => {
+    index = players.indexOf(player);
     if (index !== -1) {
         players[index].score -= 5;
 
@@ -187,7 +190,33 @@ const decreaseScore = (player) => {
  
 }
 
+displayPlayers();
 
-displayPlayers(players);
+*/
+
+console.log(players);
+
+
+let playersJson = JSON.stringify(players);
+localStorage.setItem('players', playersJson);
+console.log(playersJson);
+console.log(localStorage)
+
+players.push({
+    firstName: 'Kami',
+    lastName: 'Kamrava'
+   
+
+})
+
+console.log(players)
+
+console.log(playersJson)
+
+let firstName = localStorage.getItem('firstName')
+console.log(firstName)
+
+
+
 
 

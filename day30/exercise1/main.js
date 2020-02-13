@@ -60,23 +60,99 @@ const calculateWorldPopulation = () => {
 
 
 const createCountry = () => {
-    countryContainer = createNode('div');
-    countryFlag = createNode('img');
-    countryName = createNode('h4');
-    countryCapital = createNode('p');
-    countryLanguages = createNode('p');
-    countryPopulation = createNode('p');
-
-    countryContainer.setAttribute('class', 'country-container');
-    countryFlag.setAttribute('class', 'flag');
-    countryName.setAttribute('class', 'country-name');
+   
 
 }
 
 const appendCountry = () => {
-    countryContainer.append(countryFlag, countryName, countryCapital, countryLanguages, countryPopulation);
-    countriesWrapper.append(countryContainer);
+  
 }
+
+const displayCountries = (arr) => {
+    let countries = [...arr];
+    countriesWrapper.textContent = '';
+    statisticsWrapper.textContent = '';
+
+    totalCountries.textContent = countries.length;
+    createWorldBar();
+console.time('displaying')
+    for(const country in countries) {
+        let {name, flag, capital, languages, population} = countries[country];
+
+
+/*        
+        countriesWrapper.innerHTML +=
+        `<div class='country-container grow'>
+            <img src="${flag}" class="flag">
+                <h4 class="country-name">${name}</h4>
+                <p>Capital: ${capital}</p>
+                <p>Languages: ${languages}</p>
+                <p>Population: ${population.toString()}</p>
+            </div>`  
+            
+    
+        
+
+        statisticsWrapper.innerHTML +=
+        `<div class="statistics-countries__container">
+            <div><p>${name}</p></div>
+                <div class="world-bar"style ="width: ${population/10000000}px"></div>
+            <div><p>${population.toString()}</p></div>
+        </div>`
+        */
+        // createCountry();
+
+        countryContainer = createNode('div');
+        countryFlag = createNode('img');
+        countryName = createNode('h4');
+        countryCapital = createNode('p');
+        countryLanguages = createNode('p');
+        countryPopulation = createNode('p');
+    
+        countryContainer.setAttribute('class', 'country-container');
+        countryFlag.setAttribute('class', 'flag');
+        countryName.setAttribute('class', 'country-name');
+        
+        //setting textContent
+        countryFlag.src = `${flag}`;
+        countryName.textContent = `${name}`;
+        countryCapital.textContent = `Capital: ${capital}`;
+        countryLanguages.textContent = `Languages: ${languages}`;
+        countryPopulation.textContent = `Population: ${population}`;
+
+        //appendingDivs
+        // appendCountry();
+
+        countryContainer.append(countryFlag, countryName, countryCapital, countryLanguages, countryPopulation);
+        countriesWrapper.append(countryContainer);
+        
+        const countryPopContainer = createNode('div');
+        countryPopContainer.setAttribute('class', 'statistics-countries__container');
+        let countryPopName = createNode('p');
+        let countryNameDiv = createNode('div');
+        let countryBar = createNode('div');
+        countryBar.style.width = `${population/10000000}px`;
+        countryBar.style.height = '40px';
+        countryBar.style.backgroundColor = 'rgb(235, 150, 22)';
+        let countryPop = createNode('p')
+        let countryPopulationDiv = createNode('div');
+        countryPopName.textContent = name;
+        countryPop.textContent = population.toString();
+        countryNameDiv.append(countryPopName);
+        countryPopContainer.append(countryNameDiv, countryBar);
+    
+        countryPopulationDiv.append(countryPop);
+        countryPopContainer.append(countryPopulationDiv);
+
+
+        statisticsWrapper.append(countryPopContainer);
+        console.timeEnd('displayed')
+
+    }
+
+}
+
+
 
 const createWorldBar = () => {
 
@@ -157,61 +233,16 @@ searchInput.addEventListener('keyup', () => {
     displayCountries(newArr);
 });
 
-const displayCountries = (countries) => {
-    countriesWrapper.textContent = '';
-    statisticsWrapper.textContent = '';
-
-    totalCountries.textContent = countries.length;
-    createWorldBar();
-
-    for(const country in countries) {
-        let {name, flag, capital, languages, population} = countries[country];
-
-        createCountry();
-        
-        //setting textContent
-        countryFlag.src = `${flag}`;
-        countryName.textContent = `${name}`;
-        countryCapital.textContent = `Capital: ${capital}`;
-        countryLanguages.textContent = `Languages: ${languages}`;
-        countryPopulation.textContent = `Population: ${population}`;
-
-        //appendingDivs
-        appendCountry();
-
-        const countryPopContainer = createNode('div');
-        countryPopContainer.setAttribute('class', 'statistics-countries__container');
-        let countryPopName = createNode('p');
-        let countryNameDiv = createNode('div');
-        let countryBar = createNode('div');
-        countryBar.style.width = `${population/10000000}px`;
-        countryBar.style.height = '40px';
-        countryBar.style.backgroundColor = 'rgb(235, 150, 22)';
-        let countryPop = createNode('p')
-        let countryPopulationDiv = createNode('div');
-        countryPopName.textContent = name;
-        countryPop.textContent = population.toString();
-        countryNameDiv.append(countryPopName);
-        countryPopContainer.append(countryNameDiv, countryBar);
-    
-        countryPopulationDiv.append(countryPop);
-        countryPopContainer.append(countryPopulationDiv);
-
-
-        statisticsWrapper.append(countryPopContainer);
-
-    }
-
-}
 
 const sortByNameOrder = (newArr) => {
-    newArr.sort((a, b) => {
+    let countries = [...newArr];
+    countries.sort((a, b) => {
         if(a.name > b.name) return -1;
         if(a.name < b.name) return 1;
         return 0;
 
     })
-    return newArr;
+    return countries;
 }
 
 nameBtnSort.addEventListener('click', sortByName = () => {
@@ -242,12 +273,13 @@ nameBtnSort.addEventListener('click', sortByName = () => {
 
 
 const sortByCapitalOrder = (newArr) => {
-    newArr.sort((a, b) => {
+    let countries = [...newArr];
+    countries.sort((a, b) => {
         if(a.capital < b.capital) return -1;
         if(a.capital > b.capital) return 1;
         return 0;
     })
-    return newArr;
+    return countries;
 }
 
 
@@ -276,12 +308,13 @@ capitalBtnSort.addEventListener('click', sortByCapital = () => {
 });
 
 const sortByPopOrder = (newArr) => {
-    newArr.sort((a, b) => {
+    let countries = [...newArr]
+    countries.sort((a, b) => {
         if(a.population > b.population) return -1;
         if(a.population < b.population) return 1;
         return 0;
     })
-    return newArr;
+    return countries;
 }
 
 populationBtnSort.addEventListener('click', sortCountriesByPopulation = () => {
@@ -305,11 +338,6 @@ populationBtnSort.addEventListener('click', sortCountriesByPopulation = () => {
     toggle();
     
 })
-
-//loads the countries
-displayCountries(countries);
-
-
 
 
 const displayTenLargestCountries = () => {
@@ -425,6 +453,9 @@ backToTopBtn.addEventListener('click', backToTop = () => {
 })
 
 displayTenLargestCountries();
+
+//loads the countries
+displayCountries(countries);
 
 
 
