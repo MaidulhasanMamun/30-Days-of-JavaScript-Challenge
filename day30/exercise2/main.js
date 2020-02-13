@@ -38,16 +38,16 @@ firstNameInput.addEventListener('keyup', validateName = () => {
     let input = firstNameInput.value;
     if(!input.match(regex)) {
         warningFirstName.textContent = 'First name must be alphanumeric and include 3 - 16 letters';
-        firstNameInput.classList.add('warning');
-        firstNameInput.classList.remove('ticked');
-        lastNameValidated = true
+        firstNameInput.classList.add('warning-outline');
+        firstNameInput.classList.remove('thicked');
+        firstNameValidated = false
         validateForm();
 
         
 
     }  else{
         warningFirstName.textContent = "";
-        firstNameInput.classList.add('ticked');
+        firstNameInput.classList.add('thicked');
         firstNameValidated = true
         validateForm();
 
@@ -62,15 +62,15 @@ lastNameInput.addEventListener('keyup', () => {
     console.log(match)
     if(!input.match(regex)) {
         warningLastName.textContent = 'Last name must be alphanumeric and include 3 - 16 letters';
-        lastNameInput.classList.add('warning');
-        lastNameInput.classList.remove('ticked');
+        lastNameInput.classList.add('warning-outline');
+        lastNameInput.classList.remove('thicked');
         lastNameValidated = false
         validateForm();
 
 
     }  else{
         warningLastName.textContent = "";
-        lastNameInput.classList.add('ticked');
+        lastNameInput.classList.add('thicked');
         lastNameValidated = true
         validateForm();
 
@@ -85,15 +85,14 @@ email.addEventListener('keyup', () => {
     console.log(match)
     if(!email.value.match(regex)) {
         warningEmail.textContent = 'Email must be a valid address, e.g. example@example.com';
-        email.classList.add('warning');
-        email.classList.remove('ticked');
+        email.classList.add('warning-outline');
+        email.classList.remove('thicked');
         emailValidated = false
         validateForm();
 
     } else {
         warningEmail.textContent = "";
-        email.classList.remove('warning');
-        email.classList.add('ticked');
+        email.classList.add('thicked');
         emailValidated = true
         validateForm();
 
@@ -108,16 +107,15 @@ password.addEventListener('keyup', () => {
     console.log(match)
     if(!input.match(regex)) {
         warningPassword.textContent = 'Passord be alphanumeric and include 6 - 20 letters';
-        password.classList.add('warning');
-        password.classList.remove('ticked');
+        password.classList.add('warning-outline');
+        password.classList.remove('thicked');
         passwordValidated = false;
         validateForm();
 
 
     }  else{
         warningPassword.textContent = "";
-        email.classList.remove('warning');
-        password.classList.add('ticked');
+        password.classList.add('thicked');
         passwordValidated = true;
         validateForm();
     }
@@ -131,15 +129,14 @@ phone.addEventListener('keyup', () => {
     console.log(match)
     if(!input.match(regex)) {
         warningPhone.textContent = 'A valid Telephone number(11 digits and 333-333-3334)';
-        phone.classList.add('warning');
-        phone.classList.remove('ticked');
+        phone.classList.add('warning-outline');
+        phone.classList.remove('thicked');
         phoneValidated = false
         validateForm();
 
     }  else{
         warningPhone.textContent = "";
-        email.classList.remove('warning');
-        phone.classList.add('ticked');
+        phone.classList.add('thicked');
         phoneValidated = true;
         validateForm();
     }
@@ -147,39 +144,27 @@ phone.addEventListener('keyup', () => {
 })
 
 bio.addEventListener('keyup', () => {
-    let regex = /^[a-z_-].{8,50}$/ig
+    let regex = /^[a-z _-]{8,50}$/ig
     let input = bio.value;
     let match = input.match(regex);
     console.log(match)
     if(!input.match(regex)) {
         warningBio.textContent = 'Bio must contain only lowercase letters, underscores,\n hyphens and be 8-50 characters';
-        bio.classList.add('warning');
-        bio.classList.remove('ticked');
+        bio.classList.add('warning-outline');
+        bio.classList.remove('thicked');
         bioValidated = false
         validateForm();
 
     }  else{
         warningBio.textContent = "";
-        bio.classList.remove('warning');
-        bio.classList.add('ticked');
+        bio.classList.add('thicked');
         bioValidated = true
         validateForm();
     }
   
 })
 
-/*
-const inputs = document.querySelectorAll('input');
-    inputs.forEach((input) => {
-        input.addEventListener('input', (e) => {
-            const targetName = e.target.name;
-            console.log(targetName)
-            if(targetName === 'firstName') {
 
-            }
-        } )
-
-    })*/
 
     
     const validateForm = () => {

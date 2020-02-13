@@ -84,27 +84,20 @@ input {
 
 }
 
-.warning-first-name,
-.warning-last-name,
-.warning-email,
-.warning-password,
-.warning-phone,
-.warning-bio {
+.warning {
     color: rgb(235, 150, 22);
     font-weight: 700;
     font-size: 19px;
-    
-
 }
 
 input:focus {
     outline: none;
 }
-.warning {
+.warning-outline {
     border: 2px solid rgb(218, 62, 62);
 }
 
-.ticked {
+.thicked {
     border: 2px solid rgb(82, 211, 136);
 }
 
