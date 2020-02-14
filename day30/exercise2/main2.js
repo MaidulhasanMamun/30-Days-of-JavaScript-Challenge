@@ -10,13 +10,14 @@ let warningPhone = document.querySelector('.warning-phone');
 let warningBio = document.querySelector('.warning-bio');
 let warningBio2 = document.querySelector('.warning-bio2');
 
+submitBtn.disabled = true;
 
-let firstNameValidated = false
-lastNameValidated = false
-emailValidated = false
-passwordValidated = false
-phoneValidated = false
-bioValidated = false
+let validation = firstNameValidated = false
+                 lastNameValidated = false
+                 emailValidated = false
+                 passwordValidated = false
+                 phoneValidated = false
+                 bioValidated = false
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -36,13 +37,13 @@ inputs.forEach((input) => {
                 warningFirstName.textContent = 'First name must be alphanumeric and include 3 - 16 letters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
-                firstNameValidated = false
+                firstNameValidated = false;
                 validateForm();
 
             } else {
                 warningFirstName.textContent = "";
                 input.classList.add('thicked');
-                firstNameValidated = true
+                firstNameValidated = true;
                 validateForm();
 
             }
@@ -54,14 +55,14 @@ inputs.forEach((input) => {
                 warningLastName.textContent = 'Last name must be alphanumeric and include 3 - 16 letters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
-                lastNameValidated = false
+                lastNameValidated = false;
                 validateForm();
 
 
             } else {
                 warningLastName.textContent = "";
                 input.classList.add('thicked');
-                lastNameValidated = true
+                lastNameValidated = true;
                 validateForm();
 
             }
@@ -72,20 +73,20 @@ inputs.forEach((input) => {
                 warningEmail.textContent = 'Email must be a valid address, e.g. example@example.com';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
-                emailValidated = false
+                emailValidated = false;
                 validateForm();
 
             } else {
                 warningEmail.textContent = "";
                 input.classList.add('thicked');
-                emailValidated = true
+                emailValidated = true;
                 validateForm();
 
             }
         } else if (target === 'password') {
             let regex = /^[A-Z-a-z0-9]{6,20}$/g
             if (!regex.test(value)) {
-                warningPassword.textContent = 'Passord must be alphanumeric and include 6 - 20 letters';
+                warningPassword.textContent = 'Passwcheleord must be alphanumeric and include 6 - 20 letters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
                 passwordValidated = false;
@@ -105,7 +106,7 @@ inputs.forEach((input) => {
                 warningPhone.textContent = 'A valid Telephone number(11 digits and 333-333-3334)';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
-                phoneValidated = false
+                phoneValidated = false;
                 validateForm();
 
             } else {
@@ -121,14 +122,14 @@ inputs.forEach((input) => {
                 warningBio2.textContent = 'hyphens and be 8-50 characters';
                 input.classList.add('warning-outline');
                 input.classList.remove('thicked');
-                bioValidated = false
+                bioValidated = false;
                 validateForm();
 
             } else {
                 warningBio.textContent = "";
                 warningBio2.textContent = "";
                 input.classList.add('thicked');
-                bioValidated = true
+                bioValidated = true;
                 validateForm();
             }
         }
@@ -141,15 +142,14 @@ const validateForm = () => {
 
     if (firstNameValidated === true && lastNameValidated === true && emailValidated === true && passwordValidated === true && phoneValidated === true && bioValidated === true) {
         submitBtn.classList.add('validated');
-        submitBtn.addEventListener('click', sendForm);
+        submitBtn.disabled = false;
     } else {
-        console.log('not validated')
         submitBtn.classList.remove('validated');
-        submitBtn.removeEventListener('click', sendForm);
+        submitBtn.disabled = true;
 
 
     }
 }
 
 const sendForm = () => form.innerHTML = `<h1>Thanks for submitting this form!</h1>`;
-const removeSend = () => submitBtn.removeEventListener('click', sendForm);
+submitBtn.addEventListener('click', sendForm);
